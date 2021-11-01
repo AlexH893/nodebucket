@@ -1,23 +1,52 @@
-import { HomeComponent } from './pages/home/home.component';
-import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
+/**
+ * Title: app.routing.ts
+ * Author: Alex Haefner
+ * Date: 21 September 2021
+ * Description: The app routing file for bobs services
+ */
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
+import { RouterModule, Routes } from '@angular/router';
+import { SignInGuard } from './sign-in.guard';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { BaseLayoutComponent } from './base-layout/base-layout.component';
+import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   {
-    path: '',
-    component: BaseLayoutComponent,
-    children: [
+      path: '',
+      component: BaseLayoutComponent,
+      children: [
       {
         path: '',
         component: HomeComponent
-      }
+      },
+      ],
+      canActivate: [SignInGuard]
+  },
+  {
+    path: 'session',
+    component: SignInComponent,
+    children: [
+    {
+      path: 'not-found',
+      component: NotFoundComponent
+    },
+    {
+      path: 'sign-in',
+      component: SignInComponent
+    }
     ]
-  }
+},
+{
+  path: '**',
+  redirectTo: 'session/not-found'
+}
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: false, scrollPositionRestoration: 'enabled', relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

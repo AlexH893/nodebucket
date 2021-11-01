@@ -1,0 +1,39 @@
+<!---
+ * Title: base-layout.component.html
+ * Author: Alex Haefner
+ * Date: 27 Sep 2021
+ * Description: The base-layout component file for bobs shop - navbar
+ --->
+
+ <mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div class="logo"></div>
+       <img src="./assets/logo.png" height="65" />
+    <div style="width: 80%">
+      <div fxLayout="row wrap" fxLayoutAlign="end start">
+        <button mat-button routerLink="/">Home</button>
+        <p>    Hello  </p>
+        <button mat-button>Sign Out</button>
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<br/>
+
+<!--
+<div fxLayout="row wrap">
+  <div fxFlex>
+    <mat-card class="main-container">
+      <br /><br />
+      <mat-card-content>
+        <router-outlet></router-outlet>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+-->
+
+<mat-card-content>
+  <router-outlet></router-outlet>
+</mat-card-content>
