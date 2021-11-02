@@ -17,6 +17,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterModule } from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
+import { TaskViewComponent } from './task-view/task-view.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {MatCardModule} from '@angular/material/card';
     AuthLayoutComponent,
     SignInComponent,
     NotFoundComponent,
+    TaskViewComponent,
 
   ],
   imports: [
