@@ -1,14 +1,21 @@
 .main-welcome {
     margin-top: 30px;
   }
-  
+
   .title {
     text-align: center;
     font-weight: lighter;
   }
-  
+
   .subtitle {
     text-align: center;
     font-size: 14px;
   }
-  
+
+/*
+  .todotasks {
+
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+*/

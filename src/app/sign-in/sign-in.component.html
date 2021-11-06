@@ -5,61 +5,57 @@
  * Description: The html component for sign-in
  --->
 
- <div fxLayout='column' id="#signincolumn">
-  <div style="text-align:center;">
-    <mat-card class='mat-elevation-z8 signin-container'>
-      <div style="text-align:center;">
-      <mat-card-title >Welcome to nodebucket!</mat-card-title>
-      <div class="logo"></div>
-      <!--<img src="./assets/logo.png" height="80" style="margin-bottom: 3%;" /> -->
-</div>
-        <mat-card-title>User Sign In</mat-card-title><br />
-        <mat-card-subtitle style="color: black;">nodebucket changes the way we manage time-sensitive tasks.</mat-card-subtitle>
+<!-- Create a form for sign-in use -->
+<div class="window" style="margin-left: 25%; width: 50%; height: 80%; margin-top:5%">
 
-        <mat-card-content>
-           <div class='msg-error' *ngIf='errorMsg'  style="color: red;">
-              <!-- echoing error message-->
-              {{ errorMsg }}
-           </div>
-           <div *ngIf="form.userId.errors && form.userId.touched">
-             <!-- error message that displays if entered ID isn't numeric -->
-              <div class='msg-error'  style="color: red;">
-                 User ID cannot contain special characters.
-              </div>
-           </div>
-
-           <div *ngIf="form.password.errors && form.password.touched">
-            <!-- error message that displays if entered ID isn't letters -->
-             <div class='msg-error'  style="color: red;">
-                User password must be at least 7 characters.
-             </div>
-          </div>
-
-           <mat-card class='mat-elevation-z0' fxLayout='column' fxLayoutGap='10px'>
-              <form [formGroup]='SignInForm' (ngSubmit)='onSubmit(); SignInForm.reset()'>
-              <mat-card-content>
-                <mat-label for="txtUserId" id='lblUserId' style="color: black;">User ID: </mat-label><br>
-                 <mat-form-field  appearance='fill'>
-
-                    <input type='text' matInput formControlName='userId' required id='txtUserId' autocomplete="off"/>
-                 </mat-form-field>
-              </mat-card-content>
-
-              <mat-card-content>
-                <mat-label for="txtPassword" id='lblPassword' style="color: black;">Password: </mat-label><br> <!-- ng-minlength="5" -->
-
-                <mat-form-field appearance='fill'>
-                   <input type='text' matInput formControlName='password' required id='txtPassword' autocomplete="off" />
-                </mat-form-field>
-             </mat-card-content>
-
-              <mat-card-actions>
-                <!-- submit button that is disabled if the form isn't valid-->
-                 <button type='submit'[disabled]='!SignInForm.valid' mat-raised-button color='primary'>Submit</button>
-              </mat-card-actions>
-              </form>
-           </mat-card>
-        </mat-card-content>
-     </mat-card>
+<div class="border-styling" fxLayout="column">
+  <div class="title-bar">
+    <div class="title-bar-text">
+    NodeBucket Task Management
   </div>
+</div>
+
+<div class="window-body">
+
+
+  <mat-card fxFlex class="mat-elevation-z8 signin-container">
+    <br /><br />
+
+    <mat-card-title style="font-size: 36px;" style="  text-align: center;">Employee Sign In </mat-card-title>
+    <br /> <br /> 
+
+
+    <mat-card-subtitle style="  text-align: center;">You must enter a valid employee ID to continue</mat-card-subtitle>
+
+    <!-- Sign-in form -->
+    <form [formGroup]="form" (ngSubmit)="login(); form.reset()">
+      <mat-card-content>
+        <mat-form-field fxFlex appearance="outline">
+          <div style="text-align:center;">
+
+            <input matInput
+            [formControl]="form.controls['empId']"
+            placeholder=" Employee ID"/>
+
+            </div>
+            <!-- Validation/ error -->
+          <mat-error *ngIf="form.controls['empId'].hasError('required') && form.controls['empId'].touched">
+            Employee ID is a required field.
+          </mat-error>
+          <mat-error *ngIf="form.controls['empId'].hasError('pattern') && form.controls['empId'].touched">
+            Employee ID must be a numerical value.
+          </mat-error>
+          <mat-error *ngIf="error">{{ error }}</mat-error>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions algin="end">
+        <br /> <br />
+        <div style="text-align:center;">
+          <!-- Disable the Sign-in button until an Employee ID is entered in the field -->
+          <button type="submit" style="width: 50%;" [disabled]="!form.valid">Sign-in</button>
+          </div>
+    </mat-card-actions>
+</form>
+  </mat-card>
+</div>
 </div>

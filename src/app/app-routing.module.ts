@@ -6,35 +6,54 @@
  */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SignInGuard } from './sign-in.guard';
+import { AuthGuard } from './auth.guard';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { BaseLayoutComponent } from './base-layout/base-layout.component';
 import { HomeComponent } from './home/home.component';
+import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
+
+
 const routes: Routes = [
   {
       path: '',
       component: BaseLayoutComponent,
-      children: [
-      {
-        path: '',
-        component: HomeComponent
-      },
+    children: [
+        {
+          path: '',
+          component: HomeComponent,
+          canActivate: [AuthGuard]
+        },
+        {
+          path: 'home',
+          component: HomeComponent,
+          canActivate: [AuthGuard]
+        },
+        {
+          path: 'contact',
+          component: ContactComponent,
+          canActivate: [AuthGuard],
+        },
+        {
+          path: 'about',
+          component: AboutComponent,
+          canActivate: [AuthGuard],
+        },
       ],
-      canActivate: [SignInGuard]
+      canActivate: [AuthGuard]
   },
   {
     path: 'session',
     component: SignInComponent,
     children: [
     {
-      path: 'not-found',
-      component: NotFoundComponent
-    },
-    {
       path: 'sign-in',
       component: SignInComponent
+    },
+    {
+      path: 'not-found',
+      component: NotFoundComponent
     }
     ]
 },
@@ -46,7 +65,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: false, scrollPositionRestoration: 'enabled', relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

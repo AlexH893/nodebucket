@@ -15,7 +15,6 @@ let empRoutes = require("./routes/employee-routes.js");
  * App configurations
  */
 let app = express();
-app.use('/api/', empRoutes);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended': true}));
 app.use(morgan('dev'));
@@ -25,10 +24,10 @@ app.use('/', express.static(path.join(__dirname, '../dist/nodebucket')));
 /**
  * Variables
  */
-const port = 4200; // server port
+const port = 3000; // server port
 
 // conncection string
-var conn = "mongodb+srv://admin:Piplup893@buwebdev-cluster-1.8auop.mongodb.net/web450?retryWrites=true&w=majority";
+var conn = "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false";
 
 /**
  * Database connection
@@ -38,14 +37,17 @@ mongoose.connect(conn, {
   useUnifiedTopology: true,
   useNewUrlParser: true
 }).then(() => {
-  console.debug(`Connection to the database instance was successful!!!!`);
+  console.debug(`Connection to the database instance was successful`);
 }).catch(err => {
   console.log(`MongoDB Error: ${err.message}`)
 }); // end mongoose connection
 
+
 /**
  * API(s) go here
  */
+
+ app.use('/api/employees', empRoutes);
 
 
 /**

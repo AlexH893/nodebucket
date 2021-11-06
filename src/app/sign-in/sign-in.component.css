@@ -1,4 +1,56 @@
-.mat-card {
-  background: #9fccca;
-  color: #fff;
+/* signin-container width and margin */
+.signin-container {
+    width: 50%;
+    margin: 15% auto;
+ }
+  /* text-align style for  a mat-card-title  */
+  .mat-card-title {
+    text-align: center;
+  }
+
+  /* This is msg-error and mat-error styling */
+  .msg-error mat-error{
+    color: #ffffff;
+    background-color: #9c3232;
+    padding: 12px;
+    margin: 10px 0px;
+    font-size: 22px;
+  }
+
+  /* This is styling for the form card */
+  .mat-elevation-z8{
+    background-color: #bebebe9c;
+    color: #ffffff;
+  }
+
+  /* mat-error and mat-card-subtitle styling */
+   mat-error, mat-card-subtitle
+  {
+    color: #b8a92a;
+    font-size: 22px;
+    font-weight: bolder;
+  }
+
+
+
+
+input[type=text]:focus {
+  width: 100%;
+}
+
+
+/* This is a styling for signin page title */
+.main-label{
+  margin-top: 150px;
+  margin-bottom: -200px;
+  font-size: 62px;
+  text-align: center;
+  color: #363686;
+
+}
+
+/* Styling for mat-card color and border-style */
+mat-card{
+  border-style: solid;
+  color: black;
 }

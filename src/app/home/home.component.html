@@ -1,9 +1,77 @@
-<div fxLayout="column" class="main-welcome">
-    <h1 class="title">
-      Welcome to WEB 450's - nodebucket Project <br />
-      <span class="subtitle">
-        Pay close attention to the requirements, double and triple check the files for code attribution, and do not wait unitl the last minute to begin working on each item.
-      </span>
-    </h1>
+<div
+  class="window"
+  style="margin-left: 25%; width: 50%; height: 80%; margin-top: 5%"
+>
+  <div class="title-bar">
+    <div class="title-bar-text">NodeBucket Task Management</div>
   </div>
-  
+  <div class="window-body">
+    <div fxLayout="column" class="main-welcome">
+      <div fxFlex>
+        <h1 class="title">
+          Welcome to WEB 450's - nodebucket Project <br />
+          <span class="subtitle">
+            nodebucket changes and improves the way we manage time-sensitive
+            tasks.
+          </span>
+        </h1>
+      </div>
+      <div fxFlex>
+        <div fxLayout="column" fxLayoutGap="15px" class="task-container">
+          <button (click)="openCreateTaskDialog()">Create Task</button>
+        </div>
+      </div>
+      <div fxFlex>
+        <div
+          fxLayout="row"
+          fxLayoutGap="15px"
+          class="task-container"
+          style="margin-top: 5%"
+        >
+          <div fxFlex>
+            <mat-card>
+              <mat-card-title>ToDo</mat-card-title>
+              <mat-card-content>
+                <div class="task-column">
+                  <div *ngFor="let item of todo" style="margin-bottom: 1%">
+                    <!--ToDo Items-->
+                    <mat-card class="task-card">
+                      <mat-card-content>
+                        <div fxLayout="row">
+                          <div fxFlex class="todotasks">
+                            <p>{{ item.text }}</p>
+                            <button>delete</button>
+                          </div>
+                        </div>
+                      </mat-card-content>
+                    </mat-card>
+                    <!--End of ToDo items in for loop-->
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <!-- Second row-->
+          <div fxFlex>
+            <mat-card>
+              <mat-card-title>Done</mat-card-title>
+              <mat-card-content>
+                <div class="task-column">
+                  <div *ngFor="let item of done">
+                    <mat-card class="task-card">
+                      <div fxLayout="row">
+                        <div fxFlex>
+                          {{ item.text }}
+                        </div>
+                      </div>
+                    </mat-card>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

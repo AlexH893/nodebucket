@@ -1,40 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-html { background-color: #8bccc9; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
 /*! XP.css v0.3.0 - https://botoxparty.github.io/XP.css/ */
-
-/* XP Styled pop-up window */
-.mat-dialog-container {
-  /* box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%), 0px 24px 38px 3px rgb(0 0 0 / 14%), 0px 9px 46px 8px rgb(0 0 0 / 12%); */
-  background: transparent;
-  box-shadow: none;
-  color: rgba(0, 0, 0, 0.87);
-}
-
 
 @font-face {
 	font-family: "Pixelated MS Sans Serif";
-	src: url(./fonts/ms_sans_serif.woff) format("woff");
-	/*src: url(ms_sans_serif.woff2) format("woff2");*/
+	src: url(ms_sans_serif.woff) format("woff");
+	src: url(ms_sans_serif.woff2) format("woff2");
 	font-weight: 400;
 	font-style: normal
 }
 
 @font-face {
 	font-family: "Pixelated MS Sans Serif";
-	src: url(./fonts/ms_sans_serif.woff) format("woff");
-	/*src: url(ms_sans_serif_bold.woff2) format("woff2");*/
+	src: url(ms_sans_serif_bold.woff) format("woff");
+	src: url(ms_sans_serif_bold.woff2) format("woff2");
 	font-weight: 700;
 	font-style: normal
 }
 
 @font-face {
 	font-family: Perfect DOS VGA\ 437 Win;
-	/*src: url(PerfectDOSVGA437Win.woff2) format("woff2"),*/
-	src: url(./fonts/ms_sans_serif.woff) format("woff");
+	src: url(PerfectDOSVGA437Win.woff2) format("woff2"), url(PerfectDOSVGA437Win.woff) format("woff");
 	font-weight: 400;
 	font-style: normal
 }

@@ -5,35 +5,41 @@
  * Description: The base-layout component file for bobs shop - navbar
  --->
 
- <mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <div class="logo"></div>
-       <img src="./assets/logo.png" height="65" />
-    <div style="width: 80%">
-      <div fxLayout="row wrap" fxLayoutAlign="end start">
-        <button mat-button routerLink="/">Home</button>
-        <p>    Hello  </p>
-        <button mat-button>Sign Out</button>
+ <div fxLayout="column">
+  <!-- navigation -->
+  <nav fxFlex>
+    <mat-toolbar>
+      <!-- navbar container -->
+      <div class="navbar-container">
+        <!-- logo -->
+        <button class="logo" routerLink="/home" mat-button> NodeBucket</button>
+
+        <button class="navbar-link" routerLink="/about" mat-button>About Us</button>
+        <button class="navbar-link" routerLink="/contact" mat-button>Contact</button>
+        <!-- Add a Sign-Out Button-->
+        <button class="navbar-link" mat-button (click)="signOut()">Sign Out</button>
+
       </div>
-    </div>
-  </mat-toolbar-row>
-</mat-toolbar>
 
-<br/>
+    </mat-toolbar>
+  </nav>
 
-<!--
-<div fxLayout="row wrap">
+  <!-- main content -->
   <div fxFlex>
-    <mat-card class="main-container">
-      <br /><br />
-      <mat-card-content>
-        <router-outlet></router-outlet>
-      </mat-card-content>
-    </mat-card>
+    <main class="main-content" fxFlex="100%;">
+      <router-outlet></router-outlet>
+    </main>
   </div>
-</div>
--->
 
-<mat-card-content>
-  <router-outlet></router-outlet>
-</mat-card-content>
+  <!-- footer -->
+  <div fxFlex>
+    <footer class="footer" style="  position: absolute; bottom: 0; width: 100%;">
+      <mat-toolbar class="footer-content">
+        <p>
+          &copy; {{year | date: 'yyyy'}} - nodebucket - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
+        </p>
+      </mat-toolbar>
+    </footer>
+  </div>
+
+</div>

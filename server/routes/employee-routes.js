@@ -7,10 +7,9 @@
 ;===========================================
 */
 
-var express = require('express');
+var express = require("express");
 const router = express.Router();
 const Employee = require("../models/employee.js");
-
 
 /**
  * findEmployeeById
@@ -37,71 +36,136 @@ const Employee = require("../models/employee.js");
  *       '501':
  *         description: MongoDB Exception
  */
-router.get('/employee/:empId', async(req, res) => {
+router.get("/:empId", async (req, res) => {
   try {
     //
-    Employee.findOne({'empId': req.params.empId}, function(err, employee) {
-
-            if (err) {
-
-                console.log(err);
-                res.status(500).send({
-
-                    'message': `MongoDB Exception: ${err}`
-                })
-            } else {
-                console.log(employee);
-                res.json(employee);
-            }
-        })
-    } catch (e) {
-        console.log(e);
+    Employee.findOne({ empId: req.params.empId }, function (err, employee) {
+      if (err) {
+        console.log(err);
         res.status(500).send({
-            'message': `Server Exception: ${e.message}`
-        })
-    }
-})
+          message: `MongoDB Exception: ${err}`,
+        });
+      } else {
+        console.log(employee);
+        res.json(employee);
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    res.status(500).send({
+      message: `Server Exception: ${e.message}`,
+    });
+  }
+});
 
+/*
+ * CreateTask API
+ */
+router.post("/:empId/tasks", async (req, res) => {
+  try {
+    Employee.findOne({ empId: req.params.empId }, function (err, employee) {
+      if (err) {
+        console.log(err);
+        res.status(500).send({
+          message: "Internal server error: " + err.message,
+        });
+      } else {
+        console.log(employee);
 
+        const newItem = {
+          text: req.body.text,
+        };
 
+        employee.todo.push(newItem);
 
+        employee.save(function (err, updatedEmployee) {
+          if (err) {
+            console.log(err);
+            res.status(500).send({
+              message: "Internal server error: " + err.message,
+            });
+          } else {
+            console.log(updatedEmployee);
+            res.json(updatedEmployee);
+          }
+        });
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    res.status(500).send({
+      message: "Internal server error: " + e.message,
+    });
+  }
+});
 
+/*
+ * FindAllTasks
+ */
+router.get("/:empId/tasks", async (req, res) => {
+  try {
+    Employee.findOne(
+      { empId: req.params.empId },
+      "empId todo done",
+      function (err, employee) {
+        if (err) {
+          console.log(err);
+          res.status(500).send({
+            message: "Interal server error:" + err.message,
+          });
+        } else {
+          console.log(employee);
+          res.json(employee);
+        }
+      }
+    );
+  } catch (e) {
+    console.log(e);
+    res.status(500).send("Interal server error: " + e.message);
+  }
+});
 
-/* this works */
- /*
- router.get('/employee', async(req, res) => {
+/*
+ * Delete task
+ */
+router.delete("/:empId/tasks", async (req, res) => {
+  try {
+    Employee.findOne({ empId: req.params.empId }, function (err, employee) {
+      if (err) {
+        console.log(err);
+        res.status(500).send({
+          message: "Internal server error: " + err.message,
+        });
+      } else {
+        console.log(employee);
 
-     try {
+        /*
+        const newItem = {
+          text: req.body.text,
+        };
 
-         Employee.find({}, function(err, employee) {
+        employee.todo.pop(tasks);
 
-             if (err) {
-
-                 console.log(err); //left off here
-                 res.status(501).send({
-
-                     'message': `MongoDB exception ${err}`
-                 })
-             } else {
-                 console.log(employee);
-                 res.json(employee);
-             }
-         })
-     } catch (e) {
-         console.log(e);
-         res.status(500).send({
-             'message': `Server exception: ${e.message}`
-         })
-     }
- })
+        employee.save(function (err, updatedEmployee) {
+          if (err) {
+            console.log(err);
+            res.status(500).send({
+              message: "Internal server error: " + err.message,
+            });
+          } else {
+            console.log(updatedEmployee);
+            res.json(updatedEmployee);
+          }
+        });
 */
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    res.status(500).send({
+      message: "Internal server error: " + e.message,
+    });
+  }
+});
 
-
-
-
-
-
-
-
-
-module.exports = router
+module.exports = router;

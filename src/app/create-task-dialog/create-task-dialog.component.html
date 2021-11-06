@@ -1,0 +1,36 @@
+<div class="window">
+  <div class="title-bar">
+    <div class="title-bar-text">Add New Task</div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize"></button>
+      <button aria-label="Maximize"></button>
+      <button aria-label="Close" (click)="cancel()"></button>
+    </div>
+  </div>
+
+  <mat-dialog-content [formGroup]="taskForm">
+    <mat-form-field style="width: 25vw">
+      <input
+        type="text"
+        placeholder="Enter task name"
+        formControlName="text"
+        (keydown.enter)="createTask()"
+        maxlength="30"
+        style="margin-left: 30%; margin-top: 2%"
+      />
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button
+      [disabled]="!taskForm.valid"
+      (click)="createTask()"
+      style="margin-right: 15%; margin-bottom: 2%"
+    >
+      Create Task
+    </button>
+    <button (click)="cancel()" style="margin-right: 23%; margin-bottom: 2%">
+      Cancel
+    </button>
+  </mat-dialog-actions>
+</div>
