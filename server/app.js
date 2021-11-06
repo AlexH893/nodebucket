@@ -1,10 +1,15 @@
 /**
  * Require statements
  */
+require('dotenv').load();
+const createError = require('http-errors');
 const express = require('express');
 const http = require('http');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const passport = require('passport');
+
+require('./routes/config/passport');
 const path = require('path');
 const mongoose = require('mongoose');
 const Router = express.Router();
