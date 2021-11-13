@@ -1,4 +1,3 @@
-
 .logo {
   margin-top: 5px;
 }
@@ -7,4 +6,28 @@
   padding-top: 25px;
   width: 100%;
   margin: 0 auto;
+}
+
+/* Footer */
+
+.mat-toolbar-row {
+  padding: 0 16 px;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #6b705c;
+}
+
+/* Navbar styling */
+.mat-toolbar {
+  background-color: #eaf4f4;
+}
+
+/* Footer Styling */
+.mat-toolbar[_ngcontent-sct-c101] {
+  background-color: #eaf4f4;
 }

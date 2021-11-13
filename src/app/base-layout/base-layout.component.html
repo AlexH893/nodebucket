@@ -3,24 +3,41 @@
  * Author: Alex Haefner
  * Date: 27 Sep 2021
  * Description: The base-layout component file for bobs shop - navbar
+ * Sources: https://stackoverflow.com/questions/57966302/is-it-possible-in-angular-to-switch-css-styles-dynamically-using-a-toggle-button
  --->
 
- <div fxLayout="column">
+<div fxLayout="column">
   <!-- navigation -->
   <nav fxFlex>
     <mat-toolbar>
       <!-- navbar container -->
       <div class="navbar-container">
         <!-- logo -->
-        <button class="logo" routerLink="/home" mat-button> NodeBucket</button>
+        <button class="logo" routerLink="/home" mat-button>NodeBucket</button>
 
-        <button class="navbar-link" routerLink="/about" mat-button>About Us</button>
-        <button class="navbar-link" routerLink="/contact" mat-button>Contact</button>
-        <!-- Add a Sign-Out Button-->
-        <button class="navbar-link" mat-button (click)="signOut()">Sign Out</button>
+        <button class="navbar-link" routerLink="/about" mat-button>
+          About Us
+        </button>
+        <button class="navbar-link" routerLink="/contact" mat-button>
+          Contact
+        </button>
 
+        <input
+          (click)="changeTheme()"
+          type="checkbox"
+          class="custom-control-input"
+          id="customSwitch1"
+        />
+        <label
+          class="custom-control-label"
+          for="customSwitch1"
+          style="font-size: 14px; justify-content: end"
+          >Toggle Styling</label
+        >
+        <button class="navbar-link" mat-button (click)="signOut()">
+          Sign Out
+        </button>
       </div>
-
     </mat-toolbar>
   </nav>
 
@@ -33,13 +50,15 @@
 
   <!-- footer -->
   <div fxFlex>
-    <footer class="footer" style="  position: absolute; bottom: 0; width: 100%;">
+    <footer class="footer">
       <mat-toolbar class="footer-content">
         <p>
-          &copy; {{year | date: 'yyyy'}} - nodebucket - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
+          &copy; {{ year | date: "yyyy" }} - nodebucket -
+          <a href="https://www.bellevue.edu/" class="bu-link" target="_blank"
+            >Bellevue University</a
+          >
         </p>
       </mat-toolbar>
     </footer>
   </div>
-
 </div>
