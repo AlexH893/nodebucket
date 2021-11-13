@@ -1,0 +1,19 @@
+/**
+ * Title: contaact.component.css
+ * Author: Richard Krasso
+ * Date: 15 August 2021
+ * Description: The css file for composer app
+ **/
+
+.location {
+  text-align: center;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.contact-container {
+  width: 100%;
+  padding-top: 50px;
+}
