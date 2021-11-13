@@ -15,11 +15,12 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterModule } from '@angular/router';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { CreateTaskDialogComponent } from './create-task-dialog/create-task-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -31,8 +32,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     ContactComponent,
     AboutComponent,
     CreateTaskDialogComponent,
-
-
   ],
   imports: [
     BrowserModule,
@@ -49,10 +48,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     RouterModule,
     MatFormFieldModule,
     MatCardModule,
-    MatDialogModule
-
+    MatDialogModule,
+    DragDropModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
