@@ -1,6 +1,13 @@
+<!---
+ * Title: home.component.html
+ * Author: Alex Haefner
+ * Date: 30 Oct 2021
+ * Description: The home component for nodebucket
+ --->
+
 <div
   class="window"
-  style="margin-left: 25%; width: 50%; height: 80%; margin-top: 5%"
+  style="margin-left: 10%; width: 80%; margin-top: 5%; overflow: overlay"
 >
   <div class="title-bar">
     <div class="title-bar-text">NodeBucket Task Management</div>
@@ -18,7 +25,9 @@
       </div>
       <div fxFlex>
         <div fxLayout="column" fxLayoutGap="15px" class="task-container">
-          <button (click)="openCreateTaskDialog()">Create Task</button>
+          <button (click)="openCreateTaskDialog()" class="taskBtn">
+            Create Task
+          </button>
         </div>
       </div>
       <div fxFlex>
@@ -32,36 +41,69 @@
             <mat-card>
               <mat-card-title>ToDo</mat-card-title>
               <mat-card-content>
-                <div class="task-column">
-                  <div *ngFor="let item of todo" style="margin-bottom: 1%">
+                <div
+                  cdkDropList
+                  #todoList="cdkDropList"
+                  [cdkDropListData]="todo"
+                  [cdkDropListConnectedTo]="[doneList]"
+                  (cdkDropListDropped)="drop($event)"
+                  (cdkDropListDropped)="($event)"
+                >
+                  <div
+                    *ngFor="let item of todo"
+                    style="margin-bottom: 1%"
+                    cdkDrag
+                  >
                     <!--ToDo Items-->
-                    <mat-card class="task-card">
+                    <mat-card class="task-card" id="todotasks">
                       <mat-card-content>
                         <div fxLayout="row">
                           <div fxFlex class="todotasks">
                             <p>{{ item.text }}</p>
-                            <button>delete</button>
+                            <button
+                              type="button"
+                              id="deleteBtn"
+                              (click)="deleteTask(item._id)"
+                            >
+                              Delete
+                            </button>
                           </div>
                         </div>
                       </mat-card-content>
                     </mat-card>
-                    <!--End of ToDo items in for loop-->
                   </div>
                 </div>
               </mat-card-content>
             </mat-card>
           </div>
+          <!--End of ToDo items in for loop-->
           <!-- Second row-->
           <div fxFlex>
             <mat-card>
               <mat-card-title>Done</mat-card-title>
               <mat-card-content>
-                <div class="task-column">
-                  <div *ngFor="let item of done">
+                <div
+                  cdkDropList
+                  #doneList="cdkDropList"
+                  [cdkDropListData]="done"
+                  [cdkDropListConnectedTo]="[todoList]"
+                  class="example-list"
+                  (cdkDropListDropped)="drop($event)"
+                >
+                  <div *ngFor="let item of done" cdkDrag>
                     <mat-card class="task-card">
                       <div fxLayout="row">
                         <div fxFlex>
-                          {{ item.text }}
+                          <p>
+                            {{ item.text }}
+                          </p>
+                          <button
+                            type="button"
+                            id="deleteBtn"
+                            (click)="deleteTask(item._id)"
+                          >
+                            Delete
+                          </button>
                         </div>
                       </div>
                     </mat-card>
