@@ -1,0 +1,73 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+html {
+  background-color: #f6fff8;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.mat-card:not([class*="mat-elevation-z"]) {
+  box-shadow: 6px 3px 6px 0px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%),
+    0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
+/* Global button styling */
+.taskBtn {
+  font-size: 15px;
+  opacity: 0.8;
+  background: #a4c3b2;
+  transition: 0.3s;
+  width: 10vw;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+#deleteBtn {
+  cursor: pointer;
+  background: #6b9080;
+}
+
+/* Styling for delete button not disabled on hover */
+#deleteBtn:not(:disabled):hover {
+  opacity: 1;
+  box-shadow: none;
+}
+
+.taskBtn:not(:disabled):hover {
+  opacity: 1;
+
+  box-shadow: 5px 4px #f6fff8;
+}
+
+/* Outline portion of task card */
+mat-card.mat-focus-indicator {
+  background-color: #eaf4f4;
+}
+
+.mat-card {
+  border-radius: 16 px;
+}
+
+div.title-bar-text {
+  text-align: center;
+  font-size: 2em;
+}
+
+/* Styling for the tasks */
+.mat-card-content {
+  background-color: #a4c3b2;
+}
+
+/* Remove padding on cards */
+.mat-card#todoCards.mat-card.mat-focus-indicator.task-card {
+  padding: 0%;
+}
+
+div .task-container#boundary {
+  border: dotted #ccc 2px;
+}
