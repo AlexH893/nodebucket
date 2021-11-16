@@ -21,6 +21,7 @@ import { AboutComponent } from './about/about.component';
 import { CreateTaskDialogComponent } from './create-task-dialog/create-task-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ContactComponent,
     AboutComponent,
     CreateTaskDialogComponent,
+    AuthLayoutComponent,
   ],
   imports: [
     BrowserModule,
