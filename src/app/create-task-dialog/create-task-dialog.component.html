@@ -23,13 +23,18 @@
 
   <mat-dialog-actions align="end">
     <button
+      class="confirmTaskBtn"
       [disabled]="!taskForm.valid"
       (click)="createTask()"
       style="margin-right: 15%; margin-bottom: 2%"
     >
-      Create Task
+      <a class="createTaskInput"> Create Task</a>
     </button>
-    <button (click)="cancel()" style="margin-right: 23%; margin-bottom: 2%">
+    <button
+      class="cancelBtn"
+      (click)="cancel()"
+      style="margin-right: 23%; margin-bottom: 2%"
+    >
       Cancel
     </button>
   </mat-dialog-actions>
