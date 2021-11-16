@@ -3,16 +3,30 @@
  * Author: Alex Haefner
  * Date: 28 October 2021
  * Description: The not-found component file
+ * Sources: https://codepen.io/SitePoint/pen/rNzBMee
  --->
-
- <div fxLayout="column">
-  <mat-card fxFlex style="margin-top: 10%; width: 50%; margin-left: 18%;" class="mat-elevation-z0">
-    <mat-card-title>
-      <img src="./assets/404.png" />
-    </mat-card-title>
-    <br/>
-    <mat-card-content style="text-align: center; padding-left: 30%;">
-      <button mat-raised-button color="accent" routerLink="/">Return</button>
-    </mat-card-content>
-  </mat-card>
-</div>
+<body>
+  <div fxLayout="column">
+    <mat-card
+      fxFlex
+      style="
+        margin-top: 10%;
+        width: 50%;
+        margin-left: 18%;
+        background-color: #f6fff8;
+      "
+      class="mat-elevation-z0"
+    >
+      <br />
+      <h1>Oops! You weren't supposed to see this page.</h1>
+      <div class="container">
+        <div class="typed-out">We'll add this to our todo board.</div>
+      </div>
+      <mat-card-content
+        style="text-align: center; padding-left: 30%; background-color: #f6fff8"
+      >
+        <button mat-raised-button color="accent" routerLink="/">Return</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</body>
