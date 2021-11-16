@@ -13,59 +13,59 @@ import { BaseLayoutComponent } from './base-layout/base-layout.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
-
+import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 
 const routes: Routes = [
   {
-      path: '',
-      component: BaseLayoutComponent,
+    path: '',
+    component: BaseLayoutComponent,
     children: [
-        {
-          path: '',
-          component: HomeComponent,
-          canActivate: [AuthGuard]
-        },
-        {
-          path: 'home',
-          component: HomeComponent,
-          canActivate: [AuthGuard]
-        },
-        {
-          path: 'contact',
-          component: ContactComponent,
-          canActivate: [AuthGuard],
-        },
-        {
-          path: 'about',
-          component: AboutComponent,
-          canActivate: [AuthGuard],
-        },
-      ],
-      canActivate: [AuthGuard]
+      {
+        path: '',
+        component: HomeComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'about',
+        component: AboutComponent,
+        canActivate: [AuthGuard],
+      },
+    ],
   },
   {
     path: 'session',
-    component: SignInComponent,
+    component: AuthLayoutComponent,
     children: [
-    {
-      path: 'sign-in',
-      component: SignInComponent
-    },
-    {
-      path: 'not-found',
-      component: NotFoundComponent
-    }
-    ]
-},
-{
-  path: '**',
-  redirectTo: 'session/not-found'
-}
-
+      {
+        path: 'sign-in',
+        component: SignInComponent,
+      },
+      {
+        path: 'not-found',
+        component: NotFoundComponent,
+      },
+    ],
+  },
+  {
+    path: '**',
+    redirectTo: 'session/not-found',
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: false, scrollPositionRestoration: 'enabled', relativeLinkResolution: 'legacy' })],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      useHash: true,
+      enableTracing: false,
+      scrollPositionRestoration: 'enabled',
+      relativeLinkResolution: 'legacy',
+    }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
