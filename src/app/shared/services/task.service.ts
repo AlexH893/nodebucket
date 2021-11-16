@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Item } from '../models/item.interface';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -18,10 +19,16 @@ export class TaskService {
     });
   }
 
-  updateTask(empId: number, todo: Item[], done: Item[]): Observable<any> {
+  updateTask(
+    empId: number,
+    todo: Item[],
+    done: Item[],
+    current: Item[]
+  ): Observable<any> {
     return this.http.put('/api/employees/' + empId + '/tasks', {
       todo,
       done,
+      current,
     });
   }
 

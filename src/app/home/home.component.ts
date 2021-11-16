@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   employee: Employee;
   todo: Item[];
   done: Item[];
+  current: Item[];
   empId: number;
 
   constructor(
@@ -51,9 +52,13 @@ export class HomeComponent implements OnInit {
 
         this.todo = this.employee.todo;
         this.done = this.employee.done;
+        this.current = this.employee.current;
 
         console.log('--Todo tasks--');
         console.log(this.todo);
+
+        console.log('--Current tasks--');
+        console.log(this.current);
 
         console.log('--Done tasks--');
         console.log(this.done);
@@ -81,6 +86,7 @@ export class HomeComponent implements OnInit {
           () => {
             this.todo = this.employee.todo;
             this.done = this.employee.done;
+            this.current = this.employee.current;
           }
         );
       }
@@ -97,7 +103,7 @@ export class HomeComponent implements OnInit {
       alert(`Reordered the existing list of task items`);
       console.log(`Reordered the existing list of task items`);
 
-      this.updateTaskList(this.empId, this.todo, this.done);
+      this.updateTaskList(this.empId, this.todo, this.done, this.current);
     } else {
       transferArrayItem(
         event.previousContainer.data,
@@ -108,12 +114,17 @@ export class HomeComponent implements OnInit {
 
       console.log('Moved task item to the container');
 
-      this.updateTaskList(this.empId, this.todo, this.done);
+      this.updateTaskList(this.empId, this.todo, this.done, this.current);
     }
   }
 
-  updateTaskList(empId: number, todo: Item[], done: Item[]): void {
-    this.taskService.updateTask(empId, todo, done).subscribe(
+  updateTaskList(
+    empId: number,
+    todo: Item[],
+    done: Item[],
+    current: Item[]
+  ): void {
+    this.taskService.updateTask(empId, todo, done, current).subscribe(
       (res) => {
         this.employee = res.data;
       },
@@ -123,6 +134,7 @@ export class HomeComponent implements OnInit {
       () => {
         this.todo = this.employee.todo;
         this.done = this.employee.done;
+        this.current = this.employee.current;
       }
     );
   }
@@ -142,6 +154,7 @@ export class HomeComponent implements OnInit {
           () => {
             this.todo = this.employee.todo;
             this.done = this.employee.done;
+            this.current = this.employee.current;
           }
         );
       }

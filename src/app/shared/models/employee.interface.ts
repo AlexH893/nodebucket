@@ -4,4 +4,5 @@ export interface Employee {
   empId: string;
   todo: Item[];
   done: Item[];
+  current: Item[];
 }

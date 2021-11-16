@@ -106,7 +106,7 @@ router.get("/:empId/tasks", async (req, res) => {
   try {
     Employee.findOne(
       { empId: req.params.empId },
-      "empId todo done",
+      "empId todo done current",
       function (err, employee) {
         if (err) {
           console.log(err);
@@ -147,6 +147,7 @@ router.put("/:empId/tasks", async (req, res) => {
 
         employee.set({
           todo: req.body.todo,
+          current: req.body.current,
           done: req.body.done,
         });
 
@@ -214,6 +215,11 @@ router.delete("/:empId/tasks/:taskId", async (req, res) => {
           const toDoItem = employee.todo.find(
             (item) => item._id.toString() === req.params.taskId
           );
+
+          const currentItem = employee.current.find(
+            (item) => item._id.toString() === req.params.taskId
+          );
+
           const doneItem = employee.done.find(
             (item) => item._id.toString() === req.params.taskId
           );
@@ -273,16 +279,44 @@ router.delete("/:empId/tasks/:taskId", async (req, res) => {
                 res.json(deleteDoneItemOnSucessResponse.toObject());
               }
             });
+          } else if (currentItem) {
+            employee.current.id(currentItem._id).remove();
+
+            employee.save(function (err, updatedCurrentItemEmployee) {
+              if (err) {
+                console.log(err);
+
+                const deleteCurrentItemMongoErrorResponse = new BaseResponse(
+                  "501",
+                  "MongoDB server error",
+                  err
+                );
+
+                res
+                  .status(501)
+                  .send(deleteCurrentItemMongoErrorResponse.toObject());
+              } else {
+                console.log(updatedCurrentItemEmployee);
+
+                const deleteCurrentItemOnSucessResponse = new BaseResponse(
+                  "200",
+                  "Removed item from done list",
+                  updatedCurrentItemEmployee
+                );
+
+                res.json(deleteCurrentItemOnSucessResponse.toObject());
+              }
+            });
           } else {
             console.log("Invalid task Id: " + req.params.taskId);
 
-            const deleteTaskNotFoundResponse = new BaseResponse(
+            const currentTaskNotFoundResponse = new BaseResponse(
               "300",
               "Invalid task Id",
               req.params.taskId
             );
 
-            res.status(300).send(deleteTaskNotFoundResponse.toObject());
+            res.status(300).send(currentTaskNotFoundResponse.toObject());
           }
         }
       }
@@ -299,4 +333,5 @@ router.delete("/:empId/tasks/:taskId", async (req, res) => {
     res.status(500).send(deleteTaskCatchErrorResponse.toObject());
   }
 });
+
 module.exports = router;

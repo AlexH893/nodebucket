@@ -16,11 +16,11 @@ let empSchema = new Schema(
   {
     //Unique:true is to ensure that indexed fields don't store duplicate values
     empId: { type: String, unique: true, dropDups: true },
-    password: { type: String },
     firstName: { type: String },
     lastName: { type: String },
     todo: [ItemDocument],
     done: [ItemDocument],
+    current: [ItemDocument],
   },
   { collection: "employees" }
 );

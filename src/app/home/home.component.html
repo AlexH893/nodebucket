@@ -3,6 +3,7 @@
  * Author: Alex Haefner
  * Date: 30 Oct 2021
  * Description: The home component for nodebucket
+ * Sources: https://codepen.io/ollybritton/pen/JXYZRo
  --->
 
 <div
@@ -25,9 +26,7 @@
       </div>
       <div fxFlex>
         <div fxLayout="column" fxLayoutGap="15px" class="task-container">
-          <button (click)="openCreateTaskDialog()" class="taskBtn">
-            Create Task
-          </button>
+          <a (click)="openCreateTaskDialog()" class="taskBtn"> Create Task </a>
         </div>
       </div>
       <div fxFlex>
@@ -45,7 +44,7 @@
                   cdkDropList
                   #todoList="cdkDropList"
                   [cdkDropListData]="todo"
-                  [cdkDropListConnectedTo]="[doneList]"
+                  [cdkDropListConnectedTo]="[doneList, currentList]"
                   (cdkDropListDropped)="drop($event)"
                   (cdkDropListDropped)="($event)"
                 >
@@ -58,15 +57,19 @@
                     <mat-card class="task-card" id="todotasks">
                       <mat-card-content>
                         <div fxLayout="row">
-                          <div fxFlex class="todotasks">
+                          <div
+                            fxFlex
+                            class="todotasks"
+                            [ngClass]="donetasks ? 'green' : 'yellow'"
+                          >
                             <p>{{ item.text }}</p>
-                            <button
+                            <a
                               type="button"
-                              id="deleteBtn"
+                              class="deleteBtn"
                               (click)="deleteTask(item._id)"
                             >
                               Delete
-                            </button>
+                            </a>
                           </div>
                         </div>
                       </mat-card-content>
@@ -77,7 +80,48 @@
             </mat-card>
           </div>
           <!--End of ToDo items in for loop-->
-          <!-- Second row-->
+          <!-- Current row-->
+          <div fxFlex>
+            <mat-card>
+              <mat-card-title>Currently working on</mat-card-title>
+              <mat-card-content>
+                <div
+                  cdkDropList
+                  #currentList="cdkDropList"
+                  [cdkDropListData]="current"
+                  [cdkDropListConnectedTo]="[todoList, doneList]"
+                  class="example-list"
+                  (cdkDropListDropped)="drop($event)"
+                >
+                  <div *ngFor="let item of current" cdkDrag>
+                    <mat-card class="task-card">
+                      <div fxLayout="row">
+                        <div
+                          fxFlex
+                          class="currentTasks"
+                          [ngClass]="
+                            todotasks ? 'yellow' : doneTasks ? 'green' : 'red'
+                          "
+                        >
+                          <p>
+                            {{ item.text }}
+                          </p>
+                          <a
+                            type="button"
+                            class="deleteBtn"
+                            (click)="deleteTask(item._id)"
+                          >
+                            Delete
+                          </a>
+                        </div>
+                      </div>
+                    </mat-card>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <!-- Done row-->
           <div fxFlex>
             <mat-card>
               <mat-card-title>Done</mat-card-title>
@@ -86,24 +130,28 @@
                   cdkDropList
                   #doneList="cdkDropList"
                   [cdkDropListData]="done"
-                  [cdkDropListConnectedTo]="[todoList]"
+                  [cdkDropListConnectedTo]="[todoList, currentList]"
                   class="example-list"
                   (cdkDropListDropped)="drop($event)"
                 >
                   <div *ngFor="let item of done" cdkDrag>
                     <mat-card class="task-card">
                       <div fxLayout="row">
-                        <div fxFlex>
+                        <div
+                          fxFlex
+                          class="doneTasks"
+                          [ngClass]="todotasks ? 'yellow' : 'green'"
+                        >
                           <p>
                             {{ item.text }}
                           </p>
-                          <button
+                          <a
                             type="button"
-                            id="deleteBtn"
+                            class="deleteBtn"
                             (click)="deleteTask(item._id)"
                           >
                             Delete
-                          </button>
+                          </a>
                         </div>
                       </div>
                     </mat-card>
