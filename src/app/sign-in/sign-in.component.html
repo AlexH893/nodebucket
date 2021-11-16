@@ -6,56 +6,77 @@
  --->
 
 <!-- Create a form for sign-in use -->
-<div class="window" style="margin-left: 25%; width: 50%; height: 80%; margin-top:5%">
+<div
+  class="window"
+  style="margin-left: 25%; width: 50%; height: 80%; margin-top: 5%"
+>
+  <div class="border-styling" fxLayout="column">
+    <div class="title-bar">
+      <div class="title-bar-text">NodeBucket Task Management</div>
+    </div>
 
-<div class="border-styling" fxLayout="column">
-  <div class="title-bar">
-    <div class="title-bar-text">
-    NodeBucket Task Management
-  </div>
-</div>
+    <div class="window-body">
+      <mat-card fxFlex class="mat-elevation-z8 signin-container">
+        <br /><br />
 
-<div class="window-body">
+        <mat-card-title style="font-size: 36px" style="text-align: center"
+          >Employee Sign In
+        </mat-card-title>
+        <br />
+        <br />
 
+        <mat-card-subtitle style="text-align: center"
+          >You must enter a valid employee ID to continue</mat-card-subtitle
+        >
 
-  <mat-card fxFlex class="mat-elevation-z8 signin-container">
-    <br /><br />
-
-    <mat-card-title style="font-size: 36px;" style="  text-align: center;">Employee Sign In </mat-card-title>
-    <br /> <br /> 
-
-
-    <mat-card-subtitle style="  text-align: center;">You must enter a valid employee ID to continue</mat-card-subtitle>
-
-    <!-- Sign-in form -->
-    <form [formGroup]="form" (ngSubmit)="login(); form.reset()">
-      <mat-card-content>
-        <mat-form-field fxFlex appearance="outline">
-          <div style="text-align:center;">
-
-            <input matInput
-            [formControl]="form.controls['empId']"
-            placeholder=" Employee ID"/>
-
+        <!-- Sign-in form -->
+        <form [formGroup]="form" (ngSubmit)="login(); form.reset()">
+          <mat-card-content>
+            <mat-form-field fxFlex appearance="outline">
+              <div style="text-align: center">
+                <input
+                  matInput
+                  [formControl]="form.controls['empId']"
+                  placeholder=" Employee ID"
+                />
+              </div>
+              <!-- Validation/ error -->
+              <mat-error
+                *ngIf="
+                  form.controls['empId'].hasError('required') &&
+                  form.controls['empId'].touched
+                "
+              >
+                Employee ID is a required field.
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  form.controls['empId'].hasError('pattern') &&
+                  form.controls['empId'].touched
+                "
+              >
+                Employee ID must be a numerical value.
+              </mat-error>
+              <mat-error *ngIf="error">{{ error }}</mat-error>
+            </mat-form-field>
+          </mat-card-content>
+          <mat-card-actions algin="end">
+            <br />
+            <br />
+            <div style="text-align: center">
+              <!-- Disable the Sign-in button until an Employee ID is entered in the field -->
+              <button
+                type="submit"
+                class="signInBtn"
+                style="width: 35%"
+                [disabled]="!form.valid"
+              >
+                <a class="signInBtnText" style="top: 18px;">Sign In</a>
+              </button>
             </div>
-            <!-- Validation/ error -->
-          <mat-error *ngIf="form.controls['empId'].hasError('required') && form.controls['empId'].touched">
-            Employee ID is a required field.
-          </mat-error>
-          <mat-error *ngIf="form.controls['empId'].hasError('pattern') && form.controls['empId'].touched">
-            Employee ID must be a numerical value.
-          </mat-error>
-          <mat-error *ngIf="error">{{ error }}</mat-error>
-        </mat-form-field>
-      </mat-card-content>
-      <mat-card-actions algin="end">
-        <br /> <br />
-        <div style="text-align:center;">
-          <!-- Disable the Sign-in button until an Employee ID is entered in the field -->
-          <button type="submit" style="width: 50%;" [disabled]="!form.valid">Sign-in</button>
-          </div>
-    </mat-card-actions>
-</form>
-  </mat-card>
-</div>
+          </mat-card-actions>
+        </form>
+      </mat-card>
+    </div>
+  </div>
 </div>
