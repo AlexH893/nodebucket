@@ -15,33 +15,108 @@ body {
   box-shadow: 6px 3px 6px 0px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%),
     0px 1px 3px 0px rgb(0 0 0 / 12%);
 }
-/* Global button styling */
+
 .taskBtn {
-  font-size: 15px;
-  opacity: 0.8;
-  background: #a4c3b2;
-  transition: 0.3s;
-  width: 10vw;
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
+  user-select: none;
   cursor: pointer;
+}
+
+a.taskBtn {
+  text-decoration: none;
+  color: #6b9080;
+  width: 4em;
+  height: 2em;
+  background: #eaf4f4;
+  position: relative;
+  padding: 16px;
+  font-size: 1.5em;
+  border-radius: 10px;
+  box-shadow: 0px 10px 0px 0px #6b9080, 0px 0px 5px 0px #6b9080;
+  transition: all 0.2s;
+  top: 10px;
+}
+
+a.taskBtn:active {
+  top: 15px;
+  box-shadow: 0px 5px 0px 0px #6b9080;
+}
+
+/*
+ Delete button styling
+*/
+a.deleteBtn {
+  cursor: pointer;
+  text-decoration: none;
+  color: #6b9080;
+  width: 4em;
+  height: 2em;
+  background: #eaf4f4;
+  position: relative;
+  padding: 6px;
+  font-size: 0.9em;
+  border-radius: 10px;
+  box-shadow: 0px 4px 0px 0px #6b9080, 0px 0px 5px 0px #bbb;
+  transition: all 0.2s;
+  top: 1px;
+}
+
+a.deleteBtn:active {
+  top: 2px;
+  box-shadow: 0px 2px 0px 0px #6b9080;
 }
 
 #deleteBtn {
   cursor: pointer;
-  background: #6b9080;
+  user-select: none;
+  top: 1px;
+  background: #eaf4f4;
 }
 
-/* Styling for delete button not disabled on hover */
-#deleteBtn:not(:disabled):hover {
-  opacity: 1;
-  box-shadow: none;
+/*
+ Create task form btns
+*/
+button.confirmTaskBtn,
+button.cancelBtn {
+  cursor: pointer;
+  text-decoration: none;
+  background: #eaf4f4;
+  color: #6b9080;
+  padding: 6px;
+  font-size: 0.9em;
+  border-radius: 10px;
+  box-shadow: 0px 5px 0px 0px #6b9080, 0px 0px 5px 0px #bbb;
+  transition: all 0.2s;
+  top: 1px;
 }
 
-.taskBtn:not(:disabled):hover {
-  opacity: 1;
+button.confirmTaskBtn:active,
+button.cancelBtn:active {
+  top: 2px;
+  box-shadow: 0px 3px 0px 0px #6b9080;
+}
 
-  box-shadow: 5px 4px #f6fff8;
+button.signInBtn {
+  cursor: pointer;
+  text-decoration: none;
+  color: #6b9080;
+  width: 4em;
+  background: #a4c3b2;
+  position: relative;
+  padding: 16px;
+  font-size: 1.5em;
+  border-radius: 10px;
+  box-shadow: 0px 10px 0px 0px #6b9080, 0px 0px 5px 0px #6b9080;
+  transition: all 0.2s;
+  top: 10px;
+  user-select: none;
+}
+
+button.signInBtn:active {
+  top: 15px;
+  box-shadow: 0px 3px 0px 0px #6b9080;
 }
 
 /* Outline portion of task card */
@@ -70,4 +145,20 @@ div.title-bar-text {
 
 div .task-container#boundary {
   border: dotted #ccc 2px;
+}
+
+/*
+ Create task component
+*/
+.window {
+  background-color: #f6fff8;
+}
+
+#mat-dialog-0 {
+  background-color: #f6fff8;
+}
+
+/* Hiding xp buttons */
+div.title-bar-controls {
+  display: none;
 }
