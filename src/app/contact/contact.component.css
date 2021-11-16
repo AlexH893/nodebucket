@@ -17,3 +17,11 @@
   width: 100%;
   padding-top: 50px;
 }
+
+li {
+  list-style-type: none;
+}
+
+.mat-card-content {
+  background-color: #f6fff8;
+}
