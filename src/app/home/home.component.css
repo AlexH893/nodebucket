@@ -1,16 +1,16 @@
 .main-welcome {
-    margin-top: 30px;
-  }
+  margin-top: 30px;
+}
 
-  .title {
-    text-align: center;
-    font-weight: lighter;
-  }
+.title {
+  text-align: center;
+  font-weight: lighter;
+}
 
-  .subtitle {
-    text-align: center;
-    font-size: 14px;
-  }
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+}
 
 /*
   .todotasks {
@@ -19,3 +19,16 @@
     white-space: pre-wrap;
   }
 */
+
+.green {
+  /* color: green; */
+  background-color: rgb(182, 248, 212);
+}
+
+.yellow {
+  background-color: rgb(187, 240, 233);
+}
+
+.red {
+  background-color: rgb(255, 254, 181);
+}
