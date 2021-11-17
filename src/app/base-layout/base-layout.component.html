@@ -18,10 +18,15 @@
         <button class="navbar-link" routerLink="/about" mat-button>
           About Us
         </button>
-        <button class="navbar-link" routerLink="/contact" mat-button>
+        <button
+          class="navbar-link"
+          id="contactBtn"
+          routerLink="/contact"
+          mat-button
+        >
           Contact
         </button>
-        <button class="navbar-link" mat-button (click)="signOut()">
+        <button class="navbar-link" id="signoutBtn" mat-button (click)="signOut()">
           Sign Out
         </button>
         <input

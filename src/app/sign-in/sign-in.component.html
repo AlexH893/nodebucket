@@ -38,6 +38,7 @@
                   matInput
                   [formControl]="form.controls['empId']"
                   placeholder=" Employee ID"
+                  id="signInField"
                 />
               </div>
               <!-- Validation/ error -->
@@ -70,6 +71,7 @@
                 class="signInBtn"
                 style="width: 35%"
                 [disabled]="!form.valid"
+                id="signInBtn"
               >
                 <a class="signInBtnText" style="top: 18px;">Sign In</a>
               </button>

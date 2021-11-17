@@ -87,7 +87,9 @@
                             class="todotasks"
                             [ngClass]="donetasks ? 'green' : 'yellow'"
                           >
-                            <p>{{ item.text }}</p>
+                            <p id="taskText" class="taskString">
+                              {{ item.text }}
+                            </p>
                             <a
                               type="button"
                               class="deleteBtn"
@@ -113,7 +115,7 @@
           >
             <mat-card>
               <mat-card-title>Currently working on</mat-card-title>
-              <mat-card-content>
+              <mat-card-content id="dropCurrent">
                 <div
                   cdkDropList
                   #currentList="cdkDropList"
@@ -132,7 +134,7 @@
                             todotasks ? 'yellow' : doneTasks ? 'green' : 'red'
                           "
                         >
-                          <p>
+                          <p class="taskString">
                             {{ item.text }}
                           </p>
                           <a
@@ -158,7 +160,7 @@
           >
             <mat-card>
               <mat-card-title>Done</mat-card-title>
-              <mat-card-content>
+              <mat-card-content id="dropDone">
                 <div
                   cdkDropList
                   #doneList="cdkDropList"
@@ -170,12 +172,8 @@
                   <div *ngFor="let item of done" cdkDrag>
                     <mat-card class="task-card">
                       <div fxLayout="row">
-                        <div
-                          fxFlex
-                          class="doneTasks"
-                          [ngClass]="todotasks ? 'yellow' : 'green'"
-                        >
-                          <p>
+                        <div fxFlex [ngClass]="todotasks ? 'yellow' : 'green'">
+                          <p class="taskString">
                             {{ item.text }}
                           </p>
                           <a
