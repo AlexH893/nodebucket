@@ -1,40 +1,17 @@
 /*
-============================================
-; Title:  haefner-person-routes.js
-; Author: Alex Haefner
-; Date:   10-25-2021
-; Description: Routes for employee with API calls
-;===========================================
-*/
+ * Author: Alex Haefner
+ * Date: 11.10.2021
+ * Description: Contains employee routes
+ * Sources:
+ */
 
 var express = require("express");
 const router = express.Router();
 const Employee = require("../models/employee.js");
 const BaseResponse = require("../models/base-response.js");
-/**
- * findEmployeeById
- * @openapi
- * /api/employee/{id}:
- *   get:
- *     tags:
- *       - Employee
- *     name: findEmployeeById
- *     description:  API for returning an employee document
- *     summary: Returns an employee document based on entered id
- *     parameters:
- *       - name: empId
- *         in: path
- *         required: true
- *         description: Employee document id
- *         schema:
- *           type: string
- *     responses:
- *       '200':
- *         description: Employee document
- *       '500':
- *         description: Server exception
- *       '501':
- *         description: MongoDB Exception
+
+/*
+ * Find employee by ID API
  */
 router.get("/:empId", async (req, res) => {
   try {

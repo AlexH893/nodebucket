@@ -1,12 +1,19 @@
 <!---
  * Title: contact.component.html
  * Author: Alex Haefner
- * Date: 15 August 2021
+ * Date: 10 November 2021
  * Description: The contact component file for the nodebucket app
  --->
+
 <h1 style="text-align: center; margin-bottom: 10%">Contact Us</h1>
 <div fxLayout="row wrap">
-  <div fxFlex class="align-center">
+  <div
+    fxFlex
+    class="align-center"
+    id="step1"
+    data-step="1"
+    data-intro="Here is where our headquarters is located"
+  >
     <mat-card-title class="card-title-icon">
       <mat-icon color="primary">navigation</mat-icon>
     </mat-card-title>
@@ -17,7 +24,13 @@
     </mat-card-content>
   </div>
 
-  <div fxFlex class="align-center">
+  <div
+    fxFlex
+    class="align-center"
+    id="step2"
+    data-step="2"
+    data-intro="This is our contact information"
+  >
     <mat-card-title class="card-title-icon">
       <mat-icon color="primary" style="display: inline-block">phone</mat-icon>
     </mat-card-title>

@@ -1,6 +1,14 @@
+/*
+ * Author: Alex Haefner
+ * Date: 11.10.2021
+ * Description: TS file for base-layout.
+ * Sources: https://code.mendhak.com/angular-intro.js/example/index.html
+ */
+
 import { Component, OnInit, Inject } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import * as introJs from 'intro.js/intro.js';
 
 @Component({
   selector: 'app-base-layout',
@@ -9,7 +17,8 @@ import { Router } from '@angular/router';
 })
 export class BaseLayoutComponent implements OnInit {
   year: number = Date.now();
-  // Define the assignment name
+
+  introJS = introJs();
 
   isXpTheme = false;
 
@@ -18,11 +27,14 @@ export class BaseLayoutComponent implements OnInit {
   ngOnInit(): void {}
   //Add a new function named signOut()
   signOut() {
-    //call the cookieService.deleteAll function and then use the Router to navigate users to the sign-in page
+    //Call the cookieService.deleteAll function and then use the Router to navigate users to the sign-in page
     this.cookieService.deleteAll();
     this.router.navigate(['/session/sign-in']);
   }
 
+  /*
+   * Toggle between website themes (base modern theme or windows XP)
+   */
   changeTheme(): void {
     if (this.isXpTheme) {
       document
@@ -35,9 +47,5 @@ export class BaseLayoutComponent implements OnInit {
         .setAttribute('href', '../../assets/styles/xp.css');
       this.isXpTheme = true;
     }
-  }
-
-  alert() {
-    alert('Coming soon');
   }
 }

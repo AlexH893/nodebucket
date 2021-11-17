@@ -3,7 +3,7 @@
  * Author: Alex Haefner
  * Date: 30 Oct 2021
  * Description: The home component for nodebucket
- * Sources: https://codepen.io/ollybritton/pen/JXYZRo
+ * Sources: https://codepen.io/ollybritton/pen/JXYZRo | https://introjs.com/ | https://material.angular.io/cdk/drag-drop/overview
  --->
 
 <div
@@ -11,22 +11,43 @@
   style="margin-left: 10%; width: 80%; margin-top: 5%; overflow: overlay"
 >
   <div class="title-bar">
-    <div class="title-bar-text">NodeBucket Task Management</div>
+    <div
+      class="title-bar-text"
+      fxFlex
+      id="step1"
+      data-intro="!Welcome to nodebucket"
+    >
+      NodeBucket Task Management
+    </div>
   </div>
   <div class="window-body">
-    <div fxLayout="column" class="main-welcome">
+    <div
+      fxLayout="column"
+      class="main-welcome"
+      id="step6"
+      data-step="6"
+      data-intro="If you ever need to remove a task, use the delete button to remove it"
+    >
       <div fxFlex>
         <h1 class="title">
           Welcome to WEB 450's - nodebucket Project <br />
+
           <span class="subtitle">
             nodebucket changes and improves the way we manage time-sensitive
             tasks.
           </span>
         </h1>
       </div>
-      <div fxFlex>
+      <div>
         <div fxLayout="column" fxLayoutGap="15px" class="task-container">
-          <a (click)="openCreateTaskDialog()" class="taskBtn"> Create Task </a>
+          <a
+            (click)="openCreateTaskDialog()"
+            class="taskBtn"
+            id="step2"
+            data-intro="To begin managing tasks, try creating your first one"
+          >
+            Create Task
+          </a>
         </div>
       </div>
       <div fxFlex>
@@ -36,9 +57,13 @@
           class="task-container"
           style="margin-top: 5%"
         >
-          <div fxFlex>
+          <div
+            fxFlex
+            id="step3"
+            data-intro="This is the todo column, where tasks that need started reside"
+          >
             <mat-card>
-              <mat-card-title>ToDo</mat-card-title>
+              <mat-card-title>Todo</mat-card-title>
               <mat-card-content>
                 <div
                   cdkDropList
@@ -81,7 +106,11 @@
           </div>
           <!--End of ToDo items in for loop-->
           <!-- Current row-->
-          <div fxFlex>
+          <div
+            fxFlex
+            id="step4"
+            data-intro="Here we have the tasks that are currently being worked on"
+          >
             <mat-card>
               <mat-card-title>Currently working on</mat-card-title>
               <mat-card-content>
@@ -122,7 +151,11 @@
             </mat-card>
           </div>
           <!-- Done row-->
-          <div fxFlex>
+          <div
+            fxFlex
+            id="step5"
+            data-intro="!Tasks that are complete can be placed here"
+          >
             <mat-card>
               <mat-card-title>Done</mat-card-title>
               <mat-card-content>

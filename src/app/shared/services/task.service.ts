@@ -1,3 +1,10 @@
+/*
+ * Author: Alex Haefner
+ * Date: 11.10.2021
+ * Description: Service file for tasks
+ * Sources:
+ */
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';

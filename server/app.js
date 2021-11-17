@@ -1,3 +1,10 @@
+/*
+ * Author: Alex Haefner
+ * Date: 11.10.2021
+ * Description: Contains app configurations
+ * Sources:
+ */
+
 /**
  * Require statements
  */

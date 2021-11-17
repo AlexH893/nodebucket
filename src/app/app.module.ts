@@ -1,3 +1,10 @@
+/**
+ * Title: app.routing.ts
+ * Author: Alex Haefner
+ * Date: 10 November 2021
+ * Description: App module containing imports & declarations
+ */
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';

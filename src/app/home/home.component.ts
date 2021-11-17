@@ -1,3 +1,10 @@
+/*
+ * Author: Alex Haefner
+ * Date: 11.10.2021
+ * Description: TS file home component
+ * Sources: https://codepen.io/ollybritton/pen/JXYZRo | https://introjs.com/ | https://material.angular.io/cdk/drag-drop/overview
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../shared/models/employee.interface';
 import { Item } from '../shared/models/item.interface';
@@ -5,6 +12,7 @@ import { TaskService } from '../shared/services/task.service';
 import { CookieService } from 'ngx-cookie-service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateTaskDialogComponent } from '../create-task-dialog/create-task-dialog.component';
+import * as introJs from 'intro.js/intro.js';
 
 import {
   DragDropModule,
@@ -26,6 +34,8 @@ export class HomeComponent implements OnInit {
   done: Item[];
   current: Item[];
   empId: number;
+
+  introJS = introJs();
 
   constructor(
     private taskService: TaskService,
@@ -54,6 +64,9 @@ export class HomeComponent implements OnInit {
         this.done = this.employee.done;
         this.current = this.employee.current;
 
+        /*
+         * Echos for debugging
+         */
         console.log('--Todo tasks--');
         console.log(this.todo);
 
@@ -68,6 +81,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /*
+   * Dialog window that opens when a user clicks on create task button
+   */
   openCreateTaskDialog() {
     const dialogRef = this.dialog.open(CreateTaskDialogComponent, {
       disableClose: true,
@@ -100,7 +116,6 @@ export class HomeComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
-      alert(`Reordered the existing list of task items`);
       console.log(`Reordered the existing list of task items`);
 
       this.updateTaskList(this.empId, this.todo, this.done, this.current);
@@ -118,6 +133,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  /*
+   * Executes when task is dropped into a column
+   */
   updateTaskList(
     empId: number,
     todo: Item[],
@@ -139,6 +157,9 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  /*
+   * Delete task function
+   */
   deleteTask(taskId: string) {
     if (confirm('Are you sure you want to delete this task?')) {
       if (taskId) {
