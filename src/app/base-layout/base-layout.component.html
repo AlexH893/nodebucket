@@ -26,9 +26,15 @@
         >
           Contact
         </button>
-        <button class="navbar-link" id="signoutBtn" mat-button (click)="signOut()">
+        <button
+          class="navbar-link"
+          id="signoutBtn"
+          mat-button
+          (click)="signOut()"
+        >
           Sign Out
         </button>
+        <!-- Checkbox to change website theme -->
         <input
           (click)="changeTheme()"
           type="checkbox"
@@ -44,6 +50,7 @@
           data-intro="Also one more thing, if you want to change the current theme, just toggle this"
           >Toggle Styling</label
         >
+        <!-- Website tutorial -->
         <a (click)="this.introJS.start()" class="tutBtn">
           <mat-icon>help_outline</mat-icon>
         </a>

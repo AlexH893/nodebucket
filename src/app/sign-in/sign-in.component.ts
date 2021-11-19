@@ -27,7 +27,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SignInComponent implements OnInit {
   form: FormGroup;
-  error: string;
+  errorMsg: string;
 
   constructor(
     private router: Router,
@@ -38,11 +38,14 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
+      /*
+       * Only numeric values are allowed for employee ID
+       */
       empId: [
-        null,
+        '',
         Validators.compose([
           Validators.required,
-          Validators.pattern('^[0-9]*$'),
+          Validators.pattern('^[a-zA-Z0-9]*$'),
         ]),
       ],
     });
@@ -51,21 +54,23 @@ export class SignInComponent implements OnInit {
   login(): void {
     const empId = this.form.controls['empId'].value;
 
-    //Get empId from mongoDB
+    // Get empId from mongoDB
     this.http.get('/api/employees/' + empId).subscribe((res) => {
       if (res) {
-        //Adding first+last name to session storage
+        // Adding first+last name to session storage
         sessionStorage.setItem(
           'name',
           `${res['firstName']} ${res['lastName']}`
         );
 
-        //Setting empId as session_user, navigate to home if ID is valid
+        // Setting empId as session_user, navigate to home if ID is valid
         this.cookieService.set('session_user', empId, 1);
 
+        // Navigate if credentials are valid
         this.router.navigate(['/']);
+        // Else, return an error
       } else {
-        this.error = 'Invalid employee ID';
+        this.errorMsg = 'Invalid employee ID';
       }
     });
   }

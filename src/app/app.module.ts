@@ -29,6 +29,7 @@ import { CreateTaskDialogComponent } from './create-task-dialog/create-task-dial
 import { MatDialogModule } from '@angular/material/dialog';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
     MatCardModule,
     MatDialogModule,
     DragDropModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

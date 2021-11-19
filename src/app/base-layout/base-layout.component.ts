@@ -20,6 +20,7 @@ export class BaseLayoutComponent implements OnInit {
 
   introJS = introJs();
 
+  // By default, the website will be loaded with the modern theme
   isXpTheme = false;
 
   constructor(private cookieService: CookieService, private router: Router) {}
@@ -27,7 +28,7 @@ export class BaseLayoutComponent implements OnInit {
   ngOnInit(): void {}
   //Add a new function named signOut()
   signOut() {
-    //Call the cookieService.deleteAll function and then use the Router to navigate users to the sign-in page
+    // Call the cookieService.deleteAll function and then use the Router to navigate users to the sign-in page
     this.cookieService.deleteAll();
     this.router.navigate(['/session/sign-in']);
   }

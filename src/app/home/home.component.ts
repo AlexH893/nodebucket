@@ -28,7 +28,6 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  //setMode = false;
   employee: Employee;
   todo: Item[];
   done: Item[];
@@ -46,6 +45,7 @@ export class HomeComponent implements OnInit {
 
     this.taskService.findAllTasks(this.empId).subscribe(
       (res) => {
+        // Logging for debugging purposes
         console.log('--Server respons from findAllTasks--');
         console.log(res);
 
@@ -89,6 +89,10 @@ export class HomeComponent implements OnInit {
       disableClose: true,
     });
 
+    /*
+     * .subscribe() comes from the rxjs library, which listens for when the
+     * Observable returns the data from your API
+     */
     dialogRef.afterClosed().subscribe((data) => {
       if (data) {
         this.taskService.createTask(this.empId, data.text).subscribe(
@@ -117,7 +121,7 @@ export class HomeComponent implements OnInit {
         event.currentIndex
       );
       console.log(`Reordered the existing list of task items`);
-
+      // Execute updateTaskList if a task is dropped into a column
       this.updateTaskList(this.empId, this.todo, this.done, this.current);
     } else {
       transferArrayItem(
@@ -134,7 +138,7 @@ export class HomeComponent implements OnInit {
   }
 
   /*
-   * Executes when task is dropped into a column
+   * Updates a task
    */
   updateTaskList(
     empId: number,
@@ -158,7 +162,7 @@ export class HomeComponent implements OnInit {
   }
 
   /*
-   * Delete task function
+   * Delete task function, with a confirmation before deleting
    */
   deleteTask(taskId: string) {
     if (confirm('Are you sure you want to delete this task?')) {

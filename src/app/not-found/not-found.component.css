@@ -1,3 +1,10 @@
+/**
+ * Author: Alex Haefner
+ * Date: 28 October 2021
+ * Description: The not-found component CSS for nodebucket
+ * Sources: https://codepen.io/SitePoint/pen/rNzBMee
+ */
+
 body {
   background: f6fff8;
   background-size: cover;
@@ -6,8 +13,10 @@ body {
 .container {
   display: inline-block;
 }
+/* Styling typed out letters */
 .typed-out {
   overflow: hidden;
+  /* The 'cursor' */
   border-right: 0.15em solid black;
   white-space: nowrap;
   animation: typing 1s steps(20, end) forwards, blinking 0.8s infinite;
@@ -22,6 +31,7 @@ body {
     width: 100%;
   }
 }
+/* Styling the 'cursor' which is essentially a border that blinks & changes color */
 @keyframes blinking {
   from {
     border-color: transparent;

@@ -15,6 +15,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./create-task-dialog.component.css'],
 })
 export class CreateTaskDialogComponent implements OnInit {
+  // FormGroup tracks the value & validity state of a FormBuilder instance group
   taskForm: FormGroup;
 
   constructor(

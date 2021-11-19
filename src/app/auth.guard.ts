@@ -25,7 +25,10 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const sessionUser = this.cookieService.get('session_user');
 
-    // If statement to check the value, if true, return true.  If false, use the router to redirect users back to the sign-in page
+    /*
+     * If statement to check the value, if true, return true.
+     * If false, use the router to redirect users back to the sign-in page
+     */
     if (sessionUser) {
       return true;
     } else {
