@@ -1,9 +1,10 @@
 /**
  * Title: app.routing.ts
  * Author: Alex Haefner
- * Date: 21 September 2021
- * Description: The app routing file for bobs services
+ * Date: 10 November 2021
+ * Description: The app routing file for nodebucket
  */
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';

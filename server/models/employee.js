@@ -1,11 +1,9 @@
 /*
-============================================
-; Title:  employee.js
-; Author: Alex Haefner
-; Date: Date: 10-27-2021
-; Description: Employee model
-;===========================================
-*/
+ * Author: Professor Krasso
+ * Modified by: Alex Haefner
+ * Date: 11.10.2021
+ * Description: Employee model
+ */
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;

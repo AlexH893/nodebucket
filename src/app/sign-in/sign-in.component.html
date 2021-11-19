@@ -5,7 +5,7 @@
  * Description: The html component for sign-in
  --->
 
-<!-- Create a form for sign-in use -->
+<!-- Create a reactive form for sign-in use -->
 <div
   class="window"
   style="margin-left: 25%; width: 50%; height: 80%; margin-top: 5%"
@@ -29,7 +29,10 @@
           >You must enter a valid employee ID to continue</mat-card-subtitle
         >
 
-        <!-- Sign-in form -->
+        <!--
+          * Reactive form for signing in that validates user input using built-in validator functions
+          * On submission the reset function is called
+        -->
         <form [formGroup]="form" (ngSubmit)="login(); form.reset()">
           <mat-card-content>
             <mat-form-field fxFlex appearance="outline">
@@ -57,7 +60,7 @@
               >
                 Employee ID must be a numerical value.
               </mat-error>
-              <mat-error *ngIf="error">{{ error }}</mat-error>
+              <mat-error *ngIf="errorMsg">{{ errorMsg }}</mat-error>
             </mat-form-field>
           </mat-card-content>
           <mat-card-actions algin="end">
@@ -71,7 +74,7 @@
                 style="width: 35%"
                 [disabled]="!form.valid"
               >
-                <a class="signInBtnText" style="top: 18px;">Sign In</a>
+                <a class="signInBtnText" style="top: 18px">Sign In</a>
               </button>
             </div>
           </mat-card-actions>

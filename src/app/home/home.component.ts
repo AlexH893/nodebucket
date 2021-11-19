@@ -1,3 +1,10 @@
+/*
+ * Author: Alex Haefner
+ * Date: 11.10.2021
+ * Description: TS file home component
+ * Sources: https://codepen.io/ollybritton/pen/JXYZRo | https://introjs.com/ | https://material.angular.io/cdk/drag-drop/overview
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../shared/models/employee.interface';
 import { Item } from '../shared/models/item.interface';
@@ -5,6 +12,7 @@ import { TaskService } from '../shared/services/task.service';
 import { CookieService } from 'ngx-cookie-service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateTaskDialogComponent } from '../create-task-dialog/create-task-dialog.component';
+import * as introJs from 'intro.js/intro.js';
 
 import {
   DragDropModule,
@@ -20,12 +28,13 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  //setMode = false;
   employee: Employee;
   todo: Item[];
   done: Item[];
   current: Item[];
   empId: number;
+
+  introJS = introJs();
 
   constructor(
     private taskService: TaskService,
@@ -36,6 +45,7 @@ export class HomeComponent implements OnInit {
 
     this.taskService.findAllTasks(this.empId).subscribe(
       (res) => {
+        // Logging for debugging purposes
         console.log('--Server respons from findAllTasks--');
         console.log(res);
 
@@ -54,6 +64,9 @@ export class HomeComponent implements OnInit {
         this.done = this.employee.done;
         this.current = this.employee.current;
 
+        /*
+         * Echos for debugging
+         */
         console.log('--Todo tasks--');
         console.log(this.todo);
 
@@ -68,11 +81,18 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /*
+   * Dialog window that opens when a user clicks on create task button
+   */
   openCreateTaskDialog() {
     const dialogRef = this.dialog.open(CreateTaskDialogComponent, {
       disableClose: true,
     });
 
+    /*
+     * .subscribe() comes from the rxjs library, which listens for when the
+     * Observable returns the data from your API
+     */
     dialogRef.afterClosed().subscribe((data) => {
       if (data) {
         this.taskService.createTask(this.empId, data.text).subscribe(
@@ -100,9 +120,8 @@ export class HomeComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
-      alert(`Reordered the existing list of task items`);
       console.log(`Reordered the existing list of task items`);
-
+      // Execute updateTaskList if a task is dropped into a column
       this.updateTaskList(this.empId, this.todo, this.done, this.current);
     } else {
       transferArrayItem(
@@ -118,6 +137,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  /*
+   * Updates a task
+   */
   updateTaskList(
     empId: number,
     todo: Item[],
@@ -139,6 +161,9 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  /*
+   * Delete task function, with a confirmation before deleting
+   */
   deleteTask(taskId: string) {
     if (confirm('Are you sure you want to delete this task?')) {
       if (taskId) {
