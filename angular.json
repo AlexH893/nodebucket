@@ -82,8 +82,8 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/assets/styles/styles.css"],
-            "scripts": []
+            "styles": ["src/assets/styles/styles.css", "src/app/introjs.css"],
+            "scripts": ["node_modules/intro.js/intro.js"]
           }
         },
         "lint": {

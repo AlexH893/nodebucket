@@ -1,0 +1,10 @@
+{
+    "name": "webdriverio-tests",
+    "version": "0.1.0",
+    "private": true,
+    "devDependencies": {
+        "@wdio/cli": "^7.16.8",
+        "@wdio/cucumber-framework": "^7.16.6"
+    },
+    "dependencies": {}
+}

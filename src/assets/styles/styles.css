@@ -119,6 +119,42 @@ button.signInBtn:active {
   box-shadow: 0px 3px 0px 0px #6b9080;
 }
 
+a.tutBtn {
+  cursor: pointer;
+  text-decoration: none;
+  color: #6b9080;
+  width: 1.5em;
+  height: 1.5em;
+  background: #eaf4f4;
+  position: relative;
+  padding: 6px;
+  font-size: 0.9em;
+  border-radius: 10px;
+  box-shadow: 0px 4px 0px 0px #6b9080, 0px 0px 5px 0px #bbb;
+  transition: all 0.2s;
+  top: 1px;
+  left: 75em;
+  position: absolute;
+  user-select: none;
+  margin-top: 0.3em;
+}
+a.tutBtn:active {
+  top: 3px;
+  box-shadow: 0px 1px 0px 0px #6b9080;
+}
+
+input#customSwitch1 {
+  left: 107em;
+  position: absolute;
+  top: 2em;
+}
+
+label#step7 {
+  top: .4em;
+  left: 100em;
+  position: absolute;
+}
+
 /* Outline portion of task card */
 mat-card.mat-focus-indicator {
   background-color: #eaf4f4;

@@ -1,3 +1,10 @@
+/**
+ * Title: app.routing.ts
+ * Author: Alex Haefner
+ * Date: 10 November 2021
+ * Description: App module containing imports & declarations
+ */
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +29,7 @@ import { CreateTaskDialogComponent } from './create-task-dialog/create-task-dial
 import { MatDialogModule } from '@angular/material/dialog';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -52,6 +60,7 @@ import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
     MatCardModule,
     MatDialogModule,
     DragDropModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

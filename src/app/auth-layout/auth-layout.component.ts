@@ -1,3 +1,10 @@
+/*
+ * Author: Alex Haefner
+ * Date: 11.10.2021
+ * Description: TS file for auth-layout component
+ * Sources:
+ */
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({

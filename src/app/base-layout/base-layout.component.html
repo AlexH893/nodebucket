@@ -1,8 +1,8 @@
 <!---
  * Title: base-layout.component.html
  * Author: Alex Haefner
- * Date: 27 Sep 2021
- * Description: The base-layout component file for bobs shop - navbar
+ * Date: 10 November 2021
+ * Description: The base-layout component file nodebucket - contains navigation
  * Sources: https://stackoverflow.com/questions/57966302/is-it-possible-in-angular-to-switch-css-styles-dynamically-using-a-toggle-button
  --->
 
@@ -18,10 +18,23 @@
         <button class="navbar-link" routerLink="/about" mat-button>
           About Us
         </button>
-        <button class="navbar-link" routerLink="/contact" mat-button>
+        <button
+          class="navbar-link"
+          id="contactBtn"
+          routerLink="/contact"
+          mat-button
+        >
           Contact
         </button>
-
+        <button
+          class="navbar-link"
+          id="signoutBtn"
+          mat-button
+          (click)="signOut()"
+        >
+          Sign Out
+        </button>
+        <!-- Checkbox to change website theme -->
         <input
           (click)="changeTheme()"
           type="checkbox"
@@ -32,11 +45,15 @@
           class="custom-control-label"
           for="customSwitch1"
           style="font-size: 14px; justify-content: end"
+          id="step7"
+          data-step="7"
+          data-intro="Also one more thing, if you want to change the current theme, just toggle this"
           >Toggle Styling</label
         >
-        <button class="navbar-link" mat-button (click)="signOut()">
-          Sign Out
-        </button>
+        <!-- Website tutorial -->
+        <a (click)="this.introJS.start()" class="tutBtn">
+          <mat-icon>help_outline</mat-icon>
+        </a>
       </div>
     </mat-toolbar>
   </nav>
