@@ -8,7 +8,6 @@
 /**
  * Require statements
  */
-require("dotenv").config({ path: "../db.env" });
 const createError = require("http-errors");
 const express = require("express");
 const http = require("http");
@@ -35,11 +34,14 @@ app.use("/", express.static(path.join(__dirname, "../dist/nodebucket")));
  */
 //const port = 3000; // server port
 
+const conn =
+  "mongodb+srv://ahaefner@my365.bellevue.edu:Lolirl54321@buwebdev-cluster-1.8auop.mongodb.net/test?retryWrites=true&w=majority";
+
 /**
  * Database connection
  */
 mongoose
-  .connect(process.env.DBCON, {
+  .connect(conn, {
     promiseLibrary: require("bluebird"),
     useUnifiedTopology: true,
     useNewUrlParser: true,
