@@ -67,6 +67,7 @@
               <mat-card-title>Todo</mat-card-title>
               <mat-card-content>
                 <div
+                  class="task-column"
                   cdkDropList
                   #todoList="cdkDropList"
                   [cdkDropListData]="todo"
@@ -118,11 +119,11 @@
               <mat-card-title>Currently working on</mat-card-title>
               <mat-card-content id="dropCurrent">
                 <div
+                  class="task-column"
                   cdkDropList
                   #currentList="cdkDropList"
                   [cdkDropListData]="current"
                   [cdkDropListConnectedTo]="[todoList, doneList]"
-                  class="example-list"
                   (cdkDropListDropped)="drop($event)"
                 >
                   <div *ngFor="let item of current" cdkDrag>
@@ -163,11 +164,11 @@
               <mat-card-title>Done</mat-card-title>
               <mat-card-content id="dropDone">
                 <div
+                  class="task-column"
                   cdkDropList
                   #doneList="cdkDropList"
                   [cdkDropListData]="done"
                   [cdkDropListConnectedTo]="[todoList, currentList]"
-                  class="example-list"
                   (cdkDropListDropped)="drop($event)"
                 >
                   <div *ngFor="let item of done" cdkDrag>

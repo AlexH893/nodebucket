@@ -33,7 +33,7 @@ app.use("/", express.static(path.join(__dirname, "../dist/nodebucket")));
 /**
  * Variables
  */
-const port = 3000; // server port
+//const port = 3000; // server port
 
 /**
  * Database connection
@@ -59,7 +59,12 @@ app.use("/api/employees", empRoutes);
 
 /**
  * Create and start server
- */
+
 http.createServer(app).listen(port, function () {
   console.log(`Application started and listening on port: ${port}`);
 }); // end http create server function
+*/
+
+app.listen(process.env.PORT || 3000, function () {
+  console.log("Application is running at localhost:" + app.get("port"));
+});

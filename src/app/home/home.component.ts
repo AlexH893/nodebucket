@@ -13,6 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateTaskDialogComponent } from '../create-task-dialog/create-task-dialog.component';
 import * as introJs from 'intro.js/intro.js';
+import { MatInputModule } from '@angular/material/input';
 
 import {
   DragDropModule,
@@ -120,8 +121,8 @@ export class HomeComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
-      console.log(`Reordered the existing list of task items`);
-      // Execute updateTaskList if a task is dropped into a column
+
+      console.log('Reordered the existing list of task items');
       this.updateTaskList(this.empId, this.todo, this.done, this.current);
     } else {
       transferArrayItem(
@@ -131,7 +132,7 @@ export class HomeComponent implements OnInit {
         event.currentIndex
       );
 
-      console.log('Moved task item to the container');
+      console.log('Task items moved to the other container');
 
       this.updateTaskList(this.empId, this.todo, this.done, this.current);
     }
