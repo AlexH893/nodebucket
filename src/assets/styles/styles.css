@@ -27,7 +27,7 @@ body {
 a.taskBtn {
   text-decoration: none;
   color: #6b9080;
-  width: 4em;
+  width: 8em;
   height: 2em;
   background: #eaf4f4;
   position: relative;
@@ -37,6 +37,11 @@ a.taskBtn {
   box-shadow: 0px 10px 0px 0px #6b9080, 0px 0px 5px 0px #6b9080;
   transition: all 0.2s;
   top: 10px;
+}
+
+a.taskBtn:not(:disabled):active {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf, inset 2px 2px grey;
 }
 
 a.taskBtn:active {
@@ -150,7 +155,7 @@ input#customSwitch1 {
 }
 
 label#step7 {
-  top: .4em;
+  top: 0.4em;
   left: 100em;
   position: absolute;
 }

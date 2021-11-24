@@ -22,6 +22,15 @@ body {
   color: rgba(0, 0, 0, 0.87);
 }
 
+.mat-card:not([class*="mat-elevation-z"]) {
+  box-shadow: none;
+  /* box-shadow: 6px 3px 6px 0px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%); */
+}
+
+mat-card.mat-focus-indicator {
+  background-color: #ece9d8;
+}
+
 @font-face {
   font-family: "Pixelated MS Sans Serif";
   src: url(../../fonts/ms_sans_serif.woff) format("woff");
@@ -58,6 +67,11 @@ body {
 
 h1 {
   font-size: 5rem;
+}
+
+div.title-bar-text {
+  text-align: center;
+  font-size: 17px;
 }
 
 h2 {
@@ -151,7 +165,47 @@ summary:focus {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 0H0v16h1V1h14V0z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 1H1v14h1V2h12V1H2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 17H0v-1h15V0h1v17z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 1h-1v14H1v1h14V1z' fill='gray'/%3E%3Cpath fill='silver' d='M2 2h12v13H2z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7 4H6v7h1v-1h1V9h1V8h1V7H9V6H8V5H7V4z' fill='%23000'/%3E%3C/svg%3E");
 }
 
-.taskBtn {
+/*
+Modal background dimming
+*/
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  opacity: 0;
+}
+
+div.title-bar-controls {
+  display: flex;
+}
+
+/* Space around the popup */
+#mat-dialog-0 {
+  background-color: transparent;
+}
+
+a.taskBtn {
+  border: none;
+  background: #ece9d8;
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey,
+    inset 2px 2px #dfdfdf;
+  border-radius: 0;
+  min-width: 75px;
+  min-height: 23px;
+  padding: 0 12px;
+  color: black;
+}
+
+a.deleteBtn {
+  border: none;
+  background: #ece9d8;
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey,
+    inset 2px 2px #dfdfdf;
+  border-radius: 0;
+  min-width: 75px;
+  min-height: 23px;
+  padding: 0 12px;
+  color: black;
+}
+
+button {
   border: none;
   background: #ece9d8;
   box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey,
@@ -162,17 +216,26 @@ summary:focus {
   padding: 0 12px;
 }
 
-/* Offset style from main stylesheet */
-mat-card.mat-focus-indicator {
-  background-color: #ece9d8;
+a.taskBtn:not(:disabled):active {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf, inset 2px 2px grey;
+}
+
+a.deleteBtn:not(:disabled):active {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf, inset 2px 2px grey;
 }
 
 button:not(:disabled):active {
   box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a,
     inset -2px -2px #dfdfdf, inset 2px 2px grey;
 }
-
 button:not(:disabled).active {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf, inset 2px 2px grey;
+}
+
+a.deleteBtn:not(:disabled).active {
   box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a,
     inset -2px -2px #dfdfdf, inset 2px 2px grey;
 }
@@ -901,6 +964,54 @@ button {
   border-radius: 3px;
 }
 
+a.taskBtn {
+  font-family: "Pixelated MS Sans Serif", Arial;
+  -webkit-font-smoothing: antialiased;
+  font-size: 11px;
+  box-sizing: border-box;
+  border: 1px solid #003c74;
+  background: linear-gradient(180deg, #fff, #ecebe5 86%, #d8d0c4);
+  box-shadow: none;
+  border-radius: 3px;
+}
+
+button.confirmTaskBtn {
+  font-family: "Pixelated MS Sans Serif", Arial;
+  -webkit-font-smoothing: antialiased;
+  font-size: 11px;
+  box-sizing: border-box;
+  border: 1px solid #003c74;
+  background: linear-gradient(180deg, #fff, #ecebe5 86%, #d8d0c4);
+  box-shadow: none;
+  border-radius: 3px;
+}
+
+button.cancelBtn {
+  font-family: "Pixelated MS Sans Serif", Arial;
+  -webkit-font-smoothing: antialiased;
+  font-size: 11px;
+  box-sizing: border-box;
+  border: 1px solid #003c74;
+  background: linear-gradient(180deg, #fff, #ecebe5 86%, #d8d0c4);
+  box-shadow: none;
+  color: #000;
+  border-radius: 3px;
+}
+a.createTaskInput {
+  color: #000;
+}
+
+a.deleteBtn {
+  font-family: "Pixelated MS Sans Serif", Arial;
+  -webkit-font-smoothing: antialiased;
+  font-size: 11px;
+  box-sizing: border-box;
+  border: 1px solid #003c74;
+  background: linear-gradient(180deg, #fff, #ecebe5 86%, #d8d0c4);
+  box-shadow: none;
+  border-radius: 3px;
+}
+
 button:not(:disabled).active,
 button:not(:disabled):active {
   box-shadow: none;
@@ -911,6 +1022,26 @@ button:not(:disabled):active {
     #e5e5de 94%,
     #f2f2f1
   );
+}
+
+a.taskBtn:not(:disabled):hover {
+  box-shadow: inset -1px 1px #fff0cf, inset 1px 2px #fdd889,
+    inset -2px 2px #fbc761, inset 2px -2px #e5a01a;
+}
+
+a.deleteBtn:not(:disabled):hover {
+  box-shadow: inset -1px 1px #fff0cf, inset 1px 2px #fdd889,
+    inset -2px 2px #fbc761, inset 2px -2px #e5a01a;
+}
+
+button.confirmTaskBtn:hover {
+  box-shadow: inset -1px 1px #fff0cf, inset 1px 2px #fdd889,
+    inset -2px 2px #fbc761, inset 2px -2px #e5a01a;
+}
+
+button.cancelBtn:hover {
+  box-shadow: inset -1px 1px #fff0cf, inset 1px 2px #fdd889,
+    inset -2px 2px #fbc761, inset 2px -2px #e5a01a;
 }
 
 button:not(:disabled):hover {
