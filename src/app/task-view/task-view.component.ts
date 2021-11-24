@@ -1,15 +1,18 @@
+/*
+ * Author: Alex Haefner
+ * Date: November 10, 2021
+ * Descripton: TS file for task modal
+ */
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-task-view',
   templateUrl: './task-view.component.html',
-  styleUrls: ['./task-view.component.css']
+  styleUrls: ['./task-view.component.css'],
 })
 export class TaskViewComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
