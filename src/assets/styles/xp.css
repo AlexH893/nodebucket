@@ -246,6 +246,10 @@ button:focus {
   outline-offset: -4px;
 }
 
+span.mat-button-wrapper {
+  color: #000;
+}
+
 label {
   display: inline-flex;
   align-items: center;
