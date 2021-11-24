@@ -18,13 +18,10 @@ describe("Nodebucket", function () {
      * Here we are entering in a valid employee ID, then locating the sign in button & clicking
      */
     element(by.id("signInField")).sendKeys("1007");
-    browser.sleep(2000); //wait 2 seconds
     element(by.id("signInBtn")).click();
     browser.sleep(2000);
     element(by.id("step2")).click();
-    browser.sleep(2000);
     element(by.id("createTaskField")).sendKeys("Created by automation");
-    browser.sleep(2000);
     element(by.id("createBtn")).click();
     browser.sleep(2000);
     /*
